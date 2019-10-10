@@ -1,0 +1,175 @@
+/* Welcome to Compass.
+ * In this file you should write your main styles. (or centralize your imports)
+ * Import this file using the following HTML or equivalent:
+ * <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
+
+@import "compass/reset";
+
+$primarycolor: white;
+$secondarycolor: #8039C0;
+$titlefont: Monument Extended;
+$bodyfont: Gosha Sans;
+$titlesize: 12vw;
+
+@mixin fullScreen {
+    width: 100vw;
+    height: 100vh;
+}
+
+@mixin borderText {
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: white;
+    -webkit-text-fill-color: transparent;
+}
+
+@font-face {
+    font-family: Gosha Sans;
+    src: url('font/GoshaSans-Regular.oft');
+}
+
+@font-face {
+    font-family: Monument Extended;
+    src: url('font/MonumentExtended-Regular.oft');
+}
+
+body {
+    background-color: black;
+    font-family: $bodyfont, sans-serif;
+    color: $primarycolor;
+    font-size: 16px;
+}
+
+a {
+    text-decoration: none;
+}
+
+// navigation bar
+
+nav {
+    width: 94vw;
+    padding-left: 3vw;
+    padding-top: 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    z-index: 2;
+    font-size: 1.3em;
+    .logo {
+        color: $primarycolor;
+    }
+}
+
+.menu {
+    transform: scale(0.7) 
+}
+
+.bar1, .bar2, .bar3 {
+    width: 25px;
+    height: 3px;
+    background-color: $primarycolor;
+    margin: 5px 0;
+    transition: 0.4s;
+}
+
+.bar1.change {
+    -webkit-transform: rotate(-45deg) translate(-7px, 6px);
+    transform: rotate(-45deg) translate(-7px, 6px);
+}
+
+.bar2.change {opacity: 0}
+
+.bar3.change {
+    -webkit-transform: rotate(45deg) translate(-6px, -4px);
+    transform: rotate(45deg) translate(-6px, -4px);
+}
+
+.menu-overlay {
+    display: none;
+    &.show {
+        @include fullScreen;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        background-color: rgba($color: #000000, $alpha: 0.8);
+    }
+    a {
+        font-family: $titlefont;
+        font-size: 3em;
+        text-transform: uppercase;
+        padding: 0.5em;
+        @include borderText;
+        &:hover {
+            -webkit-text-fill-color: white;
+        }
+        &:active {
+            -webkit-text-fill-color: white;
+        }
+    }
+}
+
+// cover slides
+
+.background {
+    position: absolute;
+    @include fullScreen;
+    z-index: -1;
+    object-fit: cover;
+}
+
+.cover {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    @include fullScreen;
+}
+
+.title {
+    display: grid;
+    grid-template-columns: 3vw 12vw 70vw 12vw 3vw;
+    place-items: center center;
+    padding-top: calc(50vh - 5vw);
+    h1 {
+        grid-column: 3 / 4;
+        font-family: $titlefont;
+        font-size: $titlesize;
+        @include borderText;
+        -webkit-text-stroke-width: 2px;
+    }
+    .right {
+        grid-column: 4 / 5;
+        
+    }
+    svg {
+        height: 8vw;
+    }
+}
+
+.explore {
+    padding-top: calc(25vh - (10vw + 3em) / 2);
+    button {
+        border: 2px solid #FFFFFF;
+        color: white;
+        background-color: transparent;
+        width: 8em;
+        height: 3em;
+        font-size: 1em;
+        text-transform: uppercase;
+        &:hover {
+            background-color: white; 
+            color: black;   
+        }
+    }
+}
+
+// info section
+
+#info {
+    padding: 10em 12vw 5vh 12vw;
+    height: 200vh;
+}
+
+h2 {
+    font-size: 2em;
+}

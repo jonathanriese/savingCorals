@@ -1,0 +1,245 @@
+/* Welcome to Compass.
+ * In this file you should write your main styles. (or centralize your imports)
+ * Import this file using the following HTML or equivalent:
+ * <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
+/* line 5, ../../../../../../../../../../../Applications/compass.app/Contents/Resources/lib/ruby/compass_1.0/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font: inherit;
+  font-size: 100%;
+  vertical-align: baseline;
+}
+
+/* line 22, ../../../../../../../../../../../Applications/compass.app/Contents/Resources/lib/ruby/compass_1.0/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+html {
+  line-height: 1;
+}
+
+/* line 24, ../../../../../../../../../../../Applications/compass.app/Contents/Resources/lib/ruby/compass_1.0/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+ol, ul {
+  list-style: none;
+}
+
+/* line 26, ../../../../../../../../../../../Applications/compass.app/Contents/Resources/lib/ruby/compass_1.0/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/* line 28, ../../../../../../../../../../../Applications/compass.app/Contents/Resources/lib/ruby/compass_1.0/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+caption, th, td {
+  text-align: left;
+  font-weight: normal;
+  vertical-align: middle;
+}
+
+/* line 30, ../../../../../../../../../../../Applications/compass.app/Contents/Resources/lib/ruby/compass_1.0/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+q, blockquote {
+  quotes: none;
+}
+/* line 103, ../../../../../../../../../../../Applications/compass.app/Contents/Resources/lib/ruby/compass_1.0/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+q:before, q:after, blockquote:before, blockquote:after {
+  content: "";
+  content: none;
+}
+
+/* line 32, ../../../../../../../../../../../Applications/compass.app/Contents/Resources/lib/ruby/compass_1.0/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+a img {
+  border: none;
+}
+
+/* line 116, ../../../../../../../../../../../Applications/compass.app/Contents/Resources/lib/ruby/compass_1.0/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+article, aside, details, figcaption, figure, footer, header, hgroup, main, menu, nav, section, summary {
+  display: block;
+}
+
+@font-face {
+  font-family: Gosha Sans;
+  src: url("font/GoshaSans-Regular.oft");
+}
+@font-face {
+  font-family: Monument Extended;
+  src: url("font/MonumentExtended-Regular.oft");
+}
+/* line 35, ../sass/style.scss */
+body {
+  background-color: black;
+  font-family: Gosha Sans, sans-serif;
+  color: white;
+  font-size: 16px;
+}
+
+/* line 42, ../sass/style.scss */
+a {
+  text-decoration: none;
+}
+
+/* line 48, ../sass/style.scss */
+nav {
+  width: 94vw;
+  padding-left: 3vw;
+  padding-top: 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: fixed;
+  z-index: 2;
+  font-size: 1.3em;
+}
+/* line 58, ../sass/style.scss */
+nav .logo {
+  color: white;
+}
+
+/* line 63, ../sass/style.scss */
+.menu {
+  transform: scale(0.7);
+}
+
+/* line 67, ../sass/style.scss */
+.bar1, .bar2, .bar3 {
+  width: 25px;
+  height: 3px;
+  background-color: white;
+  margin: 5px 0;
+  transition: 0.4s;
+}
+
+/* line 75, ../sass/style.scss */
+.bar1.change {
+  -webkit-transform: rotate(-45deg) translate(-7px, 6px);
+  transform: rotate(-45deg) translate(-7px, 6px);
+}
+
+/* line 80, ../sass/style.scss */
+.bar2.change {
+  opacity: 0;
+}
+
+/* line 82, ../sass/style.scss */
+.bar3.change {
+  -webkit-transform: rotate(45deg) translate(-6px, -4px);
+  transform: rotate(45deg) translate(-6px, -4px);
+}
+
+/* line 87, ../sass/style.scss */
+.menu-overlay {
+  display: none;
+}
+/* line 89, ../sass/style.scss */
+.menu-overlay.show {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.8);
+}
+/* line 97, ../sass/style.scss */
+.menu-overlay a {
+  font-family: Monument Extended;
+  font-size: 3em;
+  text-transform: uppercase;
+  padding: 0.5em;
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: white;
+  -webkit-text-fill-color: transparent;
+}
+/* line 103, ../sass/style.scss */
+.menu-overlay a:hover {
+  -webkit-text-fill-color: white;
+}
+/* line 106, ../sass/style.scss */
+.menu-overlay a:active {
+  -webkit-text-fill-color: white;
+}
+
+/* line 114, ../sass/style.scss */
+.background {
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  z-index: -1;
+  object-fit: cover;
+}
+
+/* line 121, ../sass/style.scss */
+.cover {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+}
+
+/* line 128, ../sass/style.scss */
+.title {
+  display: grid;
+  grid-template-columns: 3vw 12vw 70vw 12vw 3vw;
+  place-items: center center;
+  padding-top: calc(50vh - 5vw);
+}
+/* line 133, ../sass/style.scss */
+.title h1 {
+  grid-column: 3 / 4;
+  font-family: Monument Extended;
+  font-size: 12vw;
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: white;
+  -webkit-text-fill-color: transparent;
+  -webkit-text-stroke-width: 2px;
+}
+/* line 140, ../sass/style.scss */
+.title .right {
+  grid-column: 4 / 5;
+}
+/* line 144, ../sass/style.scss */
+.title svg {
+  height: 8vw;
+}
+
+/* line 149, ../sass/style.scss */
+.explore {
+  padding-top: calc(25vh - (10vw + 3em) / 2);
+}
+/* line 151, ../sass/style.scss */
+.explore button {
+  border: 2px solid #FFFFFF;
+  color: white;
+  background-color: transparent;
+  width: 8em;
+  height: 3em;
+  font-size: 1em;
+  text-transform: uppercase;
+}
+/* line 159, ../sass/style.scss */
+.explore button:hover {
+  background-color: white;
+  color: black;
+}
+
+/* line 168, ../sass/style.scss */
+#info {
+  padding: 10em 12vw 5vh 12vw;
+  height: 200vh;
+}
+
+/* line 173, ../sass/style.scss */
+h2 {
+  font-size: 2em;
+}
