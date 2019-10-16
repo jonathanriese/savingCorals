@@ -22,21 +22,27 @@ $titlesize: 12vw;
     -webkit-text-fill-color: transparent;
 }
 
+@mixin linkHover {
+    -webkit-text-fill-color: white;
+    transition: 0.5s;
+}
+
 @font-face {
     font-family: Gosha Sans;
-    src: url('font/GoshaSans-Regular.oft');
+    src: url('../font/GoshaSans-Regular.otf');
 }
 
 @font-face {
     font-family: Monument Extended;
-    src: url('font/MonumentExtended-Regular.oft');
+    src: url('../font/MonumentExtended-Regular.otf');
 }
 
-body {
+html {
     background-color: black;
     font-family: $bodyfont, sans-serif;
     color: $primarycolor;
     font-size: 16px;
+    scroll-behavior: smooth;
 }
 
 a {
@@ -48,7 +54,7 @@ a {
 nav {
     width: 94vw;
     padding-left: 3vw;
-    padding-top: 30px;
+    padding-top: 24px;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -60,8 +66,9 @@ nav {
     }
 }
 
-.menu {
-    transform: scale(0.7) 
+.menu-icon {
+    transform: scale(0.7);
+    cursor: pointer;
 }
 
 .bar1, .bar2, .bar3 {
@@ -70,6 +77,10 @@ nav {
     background-color: $primarycolor;
     margin: 5px 0;
     transition: 0.4s;
+}
+
+.change {
+    transition: 0.5s;
 }
 
 .bar1.change {
@@ -89,6 +100,7 @@ nav {
     &.show {
         @include fullScreen;
         display: flex;
+        position: fixed;
         flex-direction: column;
         justify-content: center;
         align-items: center;
@@ -102,6 +114,7 @@ nav {
         @include borderText;
         &:hover {
             -webkit-text-fill-color: white;
+            transition: 0.3s;
         }
         &:active {
             -webkit-text-fill-color: white;
@@ -125,40 +138,45 @@ nav {
     @include fullScreen;
 }
 
-.title {
+.middle {
     display: grid;
     grid-template-columns: 3vw 12vw 70vw 12vw 3vw;
     place-items: center center;
     padding-top: calc(50vh - 5vw);
-    h1 {
-        grid-column: 3 / 4;
-        font-family: $titlefont;
-        font-size: $titlesize;
-        @include borderText;
-        -webkit-text-stroke-width: 2px;
-    }
     .right {
         grid-column: 4 / 5;
         
     }
-    svg {
-        height: 8vw;
+    svg :hover {
+        fill: white;
+        transition: 0.5s;
+    }
+}
+
+.title {
+    grid-column: 3 / 4;
+    font-family: $titlefont;
+    font-size: $titlesize;
+    @include borderText;
+    -webkit-text-stroke-width: 2px;
+    &:hover {
+        @include linkHover;
     }
 }
 
 .explore {
     padding-top: calc(25vh - (10vw + 3em) / 2);
-    button {
+    a {
         border: 2px solid #FFFFFF;
         color: white;
         background-color: transparent;
-        width: 8em;
-        height: 3em;
+        padding: 1em 2em;
         font-size: 1em;
         text-transform: uppercase;
         &:hover {
             background-color: white; 
             color: black;   
+            transition: 0.5s;
         }
     }
 }
@@ -166,10 +184,12 @@ nav {
 // info section
 
 #info {
-    padding: 10em 12vw 5vh 12vw;
+    padding: 10em calc(3vw + 130px) 5vh calc(3vw + 130px);
     height: 200vh;
+    max-width: 1000px;
 }
 
 h2 {
     font-size: 2em;
+    line-height: 1.5em;
 }
