@@ -42,7 +42,6 @@ html {
     font-family: $bodyfont, sans-serif;
     color: $primarycolor;
     font-size: 16px;
-    scroll-behavior: smooth;
 }
 
 a {
@@ -145,7 +144,11 @@ nav {
     padding-top: calc(50vh - 5vw);
     .right {
         grid-column: 4 / 5;
-        
+        justify-self: end;
+    }
+    .left {
+        grid-column: 2 / 3;
+        justify-self: left;
     }
     svg :hover {
         fill: white;
