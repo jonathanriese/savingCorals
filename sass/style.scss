@@ -6,193 +6,235 @@
 @import "compass/reset";
 
 $primarycolor: white;
-$secondarycolor: #8039C0;
+$secondarycolor: #8039c0;
 $titlefont: Monument Extended;
 $bodyfont: Gosha Sans;
-$titlesize: 12vw;
+$titlesize: 9vw;
+$screen-small: 600px;
+$screen-wide: 800px;
+
+@mixin respondTo($media) {
+  @if $media == mobile {
+    @media only screen and (max-width: $screen-small) {
+      @content;
+    }
+  } @else if $media == medium-screens {
+    @media only screen and (min-width: $screen-small + 1) and (max-width: $screen-wide - 1) {
+      @content;
+    }
+  } @else if $media == wide-screens {
+    @media only screen and (min-width: $screen-wide) {
+      @content;
+    }
+  }
+}
 
 @mixin fullScreen {
-    width: 100vw;
-    height: 100vh;
+  width: 100vw;
+  height: 100vh;
 }
 
 @mixin borderText {
-    -webkit-text-stroke-width: 1px;
-    -webkit-text-stroke-color: white;
-    -webkit-text-fill-color: transparent;
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: white;
+  -webkit-text-fill-color: transparent;
 }
 
 @mixin linkHover {
-    -webkit-text-fill-color: white;
-    transition: 0.5s;
+  -webkit-text-fill-color: white;
+  transition: 0.5s;
 }
 
 @font-face {
-    font-family: Gosha Sans;
-    src: url('../font/GoshaSans-Regular.otf');
+  font-family: Gosha Sans;
+  src: url("../font/GoshaSans-Regular.otf");
 }
 
 @font-face {
-    font-family: Monument Extended;
-    src: url('../font/MonumentExtended-Regular.otf');
+  font-family: Monument Extended;
+  src: url("../font/MonumentExtended-Regular.otf");
 }
 
 html {
-    background-color: black;
-    font-family: $bodyfont, sans-serif;
-    color: $primarycolor;
-    font-size: 16px;
+  background-color: black;
+  font-family: $bodyfont, sans-serif;
+  color: $primarycolor;
+  font-size: 16px;
+  overflow-x: hidden;
 }
 
 a {
-    text-decoration: none;
+  text-decoration: none;
+  &::selection {
+    background-color: $secondarycolor;
+  }
+}
+
+::-webkit-scrollbar {
+  display: none;
 }
 
 // navigation bar
 
 nav {
-    width: 94vw;
-    padding-left: 3vw;
-    padding-top: 24px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    position: fixed;
-    z-index: 2;
-    font-size: 1.3em;
-    .logo {
-        color: $primarycolor;
-    }
+  width: 100vw;
+  padding-top: 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: fixed;
+  z-index: 2;
+  font-size: 1.3rem;
+  .logo {
+    color: $primarycolor;
+    margin-left: 16px;
+  }
 }
 
 .menu-icon {
-    transform: scale(0.7);
-    cursor: pointer;
+  transform: scale(0.7);
+  cursor: pointer;
+  margin-right: 14px;
 }
 
-.bar1, .bar2, .bar3 {
-    width: 25px;
-    height: 3px;
-    background-color: $primarycolor;
-    margin: 5px 0;
-    transition: 0.4s;
+.bar1,
+.bar2,
+.bar3 {
+  width: 25px;
+  height: 3px;
+  background-color: $primarycolor;
+  margin: 5px 0;
+  transition: 0.4s;
 }
 
 .change {
-    transition: 0.5s;
+  transition: 0.5s;
 }
 
 .bar1.change {
-    -webkit-transform: rotate(-45deg) translate(-7px, 6px);
-    transform: rotate(-45deg) translate(-7px, 6px);
+  -webkit-transform: rotate(-45deg) translate(-7px, 6px);
+  transform: rotate(-45deg) translate(-7px, 6px);
 }
 
-.bar2.change {opacity: 0}
+.bar2.change {
+  opacity: 0;
+}
 
 .bar3.change {
-    -webkit-transform: rotate(45deg) translate(-6px, -4px);
-    transform: rotate(45deg) translate(-6px, -4px);
+  -webkit-transform: rotate(45deg) translate(-6px, -4px);
+  transform: rotate(45deg) translate(-6px, -4px);
 }
 
 .menu-overlay {
-    display: none;
-    &.show {
-        @include fullScreen;
-        display: flex;
-        position: fixed;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        background-color: rgba($color: #000000, $alpha: 0.8);
+  display: none;
+  &.show {
+    @include fullScreen;
+    display: flex;
+    position: fixed;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba($color: #000000, $alpha: 0.9);
+    @include respondTo(mobile) {
+      background-color: rgba($color: #000000, $alpha: 1);
     }
-    a {
-        font-family: $titlefont;
-        font-size: 3em;
-        text-transform: uppercase;
-        padding: 0.5em;
-        @include borderText;
-        &:hover {
-            -webkit-text-fill-color: white;
-            transition: 0.3s;
-        }
-        &:active {
-            -webkit-text-fill-color: white;
-        }
+  }
+  a {
+    font-family: $titlefont;
+    font-size: 3rem;
+    text-transform: uppercase;
+    padding: 2rem;
+    @include borderText;
+    &:hover {
+      -webkit-text-fill-color: white;
+      transition: 0.3s;
     }
+    &.active {
+      -webkit-text-fill-color: white;
+    }
+  }
 }
 
 // cover slides
 
 .background {
-    position: absolute;
-    @include fullScreen;
-    z-index: -1;
-    object-fit: cover;
+  position: absolute;
+  @include fullScreen;
+  z-index: -1;
+  object-fit: cover;
 }
 
 .cover {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    @include fullScreen;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  @include fullScreen;
 }
 
 .middle {
-    display: grid;
-    grid-template-columns: 3vw 12vw 70vw 12vw 3vw;
-    place-items: center center;
-    padding-top: calc(50vh - 5vw);
-    .right {
-        grid-column: 4 / 5;
-        justify-self: end;
-    }
-    .left {
-        grid-column: 2 / 3;
-        justify-self: left;
-    }
-    svg :hover {
-        fill: white;
-        transition: 0.5s;
-    }
+  display: grid;
+  grid-template-columns: 15vw 70vw 15vw;
+  align-items: center;
+  padding-top: calc(50vh - 4.5vw);
+  .right {
+    grid-column: 3 / 4;
+    justify-self: end;
+    padding-right: 10px;
+  }
+  .left {
+    grid-column: 1 / 2;
+    justify-self: start;
+    padding-left: 10px;
+  }
+  svg :hover {
+    fill: white;
+    transition: 0.5s;
+  }
 }
 
 .title {
-    grid-column: 3 / 4;
-    font-family: $titlefont;
-    font-size: $titlesize;
-    @include borderText;
-    -webkit-text-stroke-width: 2px;
-    &:hover {
-        @include linkHover;
-    }
+  grid-column: 2 / 3;
+  font-family: $titlefont;
+  font-size: $titlesize;
+  @include borderText;
+  -webkit-text-stroke-width: 2px;
+  &:hover {
+    @include linkHover;
+  }
 }
 
 .explore {
-    padding-top: calc(25vh - (10vw + 3em) / 2);
-    a {
-        border: 2px solid #FFFFFF;
-        color: white;
-        background-color: transparent;
-        padding: 1em 2em;
-        font-size: 1em;
-        text-transform: uppercase;
-        &:hover {
-            background-color: white; 
-            color: black;   
-            transition: 0.5s;
-        }
+  padding-top: calc(25vh - 9vw / 2);
+  justify-self: center;
+  a {
+    border: 2px solid #ffffff;
+    color: white;
+    background-color: transparent;
+    padding: 1em 2em;
+    font-size: 1em;
+    text-transform: uppercase;
+    &:hover {
+      background-color: white;
+      color: black;
+      transition: 0.5s;
     }
+  }
 }
 
 // info section
 
 #info {
-    padding: 10em calc(3vw + 130px) 5vh calc(3vw + 130px);
-    height: 200vh;
-    max-width: 1000px;
+  padding: 2rem 3vw;
+  height: 200vh;
+  @include respondTo(wide-screens) {
+    padding: 10rem calc(3vw + 130px);
+  }
 }
 
 h2 {
-    font-size: 2em;
-    line-height: 1.5em;
+  font-size: 2rem;
+  line-height: 3rem;
+  &::selection {
+    background-color: $secondarycolor;
+  }
 }

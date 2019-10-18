@@ -75,43 +75,54 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   font-family: Monument Extended;
   src: url("../font/MonumentExtended-Regular.otf");
 }
-/* line 40, ../sass/style.scss */
+/* line 54, ../sass/style.scss */
 html {
   background-color: black;
   font-family: Gosha Sans, sans-serif;
   color: white;
   font-size: 16px;
+  overflow-x: hidden;
 }
 
-/* line 47, ../sass/style.scss */
+/* line 62, ../sass/style.scss */
 a {
   text-decoration: none;
 }
+/* line 64, ../sass/style.scss */
+a::selection {
+  background-color: #8039C0;
+}
 
-/* line 53, ../sass/style.scss */
+/* line 69, ../sass/style.scss */
+::-webkit-scrollbar {
+  display: none;
+}
+
+/* line 75, ../sass/style.scss */
 nav {
-  width: 94vw;
-  padding-left: 3vw;
-  padding-top: 24px;
+  width: 100vw;
+  padding-top: 16px;
   display: flex;
   justify-content: space-between;
   align-items: center;
   position: fixed;
   z-index: 2;
-  font-size: 1.3em;
+  font-size: 1.3rem;
 }
-/* line 63, ../sass/style.scss */
+/* line 84, ../sass/style.scss */
 nav .logo {
   color: white;
+  margin-left: 16px;
 }
 
-/* line 68, ../sass/style.scss */
+/* line 90, ../sass/style.scss */
 .menu-icon {
   transform: scale(0.7);
   cursor: pointer;
+  margin-right: 14px;
 }
 
-/* line 73, ../sass/style.scss */
+/* line 96, ../sass/style.scss */
 .bar1, .bar2, .bar3 {
   width: 25px;
   height: 3px;
@@ -120,33 +131,33 @@ nav .logo {
   transition: 0.4s;
 }
 
-/* line 81, ../sass/style.scss */
+/* line 104, ../sass/style.scss */
 .change {
   transition: 0.5s;
 }
 
-/* line 85, ../sass/style.scss */
+/* line 108, ../sass/style.scss */
 .bar1.change {
   -webkit-transform: rotate(-45deg) translate(-7px, 6px);
   transform: rotate(-45deg) translate(-7px, 6px);
 }
 
-/* line 90, ../sass/style.scss */
+/* line 113, ../sass/style.scss */
 .bar2.change {
   opacity: 0;
 }
 
-/* line 92, ../sass/style.scss */
+/* line 115, ../sass/style.scss */
 .bar3.change {
   -webkit-transform: rotate(45deg) translate(-6px, -4px);
   transform: rotate(45deg) translate(-6px, -4px);
 }
 
-/* line 97, ../sass/style.scss */
+/* line 120, ../sass/style.scss */
 .menu-overlay {
   display: none;
 }
-/* line 99, ../sass/style.scss */
+/* line 122, ../sass/style.scss */
 .menu-overlay.show {
   width: 100vw;
   height: 100vh;
@@ -155,29 +166,35 @@ nav .logo {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: rgba(0, 0, 0, 0.8);
+  background-color: rgba(0, 0, 0, 0.9);
 }
-/* line 108, ../sass/style.scss */
+@media only screen and (max-width: 600px) {
+  /* line 122, ../sass/style.scss */
+  .menu-overlay.show {
+    background-color: black;
+  }
+}
+/* line 134, ../sass/style.scss */
 .menu-overlay a {
   font-family: Monument Extended;
-  font-size: 3em;
+  font-size: 3rem;
   text-transform: uppercase;
-  padding: 0.5em;
+  padding: 2rem;
   -webkit-text-stroke-width: 1px;
   -webkit-text-stroke-color: white;
   -webkit-text-fill-color: transparent;
 }
-/* line 114, ../sass/style.scss */
+/* line 140, ../sass/style.scss */
 .menu-overlay a:hover {
   -webkit-text-fill-color: white;
   transition: 0.3s;
 }
-/* line 118, ../sass/style.scss */
-.menu-overlay a:active {
+/* line 144, ../sass/style.scss */
+.menu-overlay a.active {
   -webkit-text-fill-color: white;
 }
 
-/* line 126, ../sass/style.scss */
+/* line 152, ../sass/style.scss */
 .background {
   position: absolute;
   width: 100vw;
@@ -186,7 +203,7 @@ nav .logo {
   object-fit: cover;
 }
 
-/* line 133, ../sass/style.scss */
+/* line 159, ../sass/style.scss */
 .cover {
   display: flex;
   flex-direction: column;
@@ -195,50 +212,53 @@ nav .logo {
   height: 100vh;
 }
 
-/* line 140, ../sass/style.scss */
+/* line 166, ../sass/style.scss */
 .middle {
   display: grid;
-  grid-template-columns: 3vw 12vw 70vw 12vw 3vw;
-  place-items: center center;
-  padding-top: calc(50vh - 5vw);
+  grid-template-columns: 15vw 70vw 15vw;
+  align-items: center;
+  padding-top: calc(50vh - 4.5vw);
 }
-/* line 145, ../sass/style.scss */
+/* line 171, ../sass/style.scss */
 .middle .right {
-  grid-column: 4 / 5;
+  grid-column: 3 / 4;
   justify-self: end;
+  padding-right: 10px;
 }
-/* line 149, ../sass/style.scss */
+/* line 176, ../sass/style.scss */
 .middle .left {
-  grid-column: 2 / 3;
-  justify-self: left;
+  grid-column: 1 / 2;
+  justify-self: start;
+  padding-left: 10px;
 }
-/* line 153, ../sass/style.scss */
+/* line 181, ../sass/style.scss */
 .middle svg :hover {
   fill: white;
   transition: 0.5s;
 }
 
-/* line 159, ../sass/style.scss */
+/* line 187, ../sass/style.scss */
 .title {
-  grid-column: 3 / 4;
+  grid-column: 2 / 3;
   font-family: Monument Extended;
-  font-size: 12vw;
+  font-size: 9vw;
   -webkit-text-stroke-width: 1px;
   -webkit-text-stroke-color: white;
   -webkit-text-fill-color: transparent;
   -webkit-text-stroke-width: 2px;
 }
-/* line 165, ../sass/style.scss */
+/* line 193, ../sass/style.scss */
 .title:hover {
   -webkit-text-fill-color: white;
   transition: 0.5s;
 }
 
-/* line 170, ../sass/style.scss */
+/* line 198, ../sass/style.scss */
 .explore {
-  padding-top: calc(25vh - (10vw + 3em) / 2);
+  padding-top: calc(25vh - 9vw / 2);
+  justify-self: center;
 }
-/* line 172, ../sass/style.scss */
+/* line 201, ../sass/style.scss */
 .explore a {
   border: 2px solid #FFFFFF;
   color: white;
@@ -247,22 +267,31 @@ nav .logo {
   font-size: 1em;
   text-transform: uppercase;
 }
-/* line 179, ../sass/style.scss */
+/* line 208, ../sass/style.scss */
 .explore a:hover {
   background-color: white;
   color: black;
   transition: 0.5s;
 }
 
-/* line 189, ../sass/style.scss */
+/* line 218, ../sass/style.scss */
 #info {
-  padding: 10em calc(3vw + 130px) 5vh calc(3vw + 130px);
+  padding: 2rem 3vw;
   height: 200vh;
-  max-width: 1000px;
+}
+@media only screen and (min-width: 800px) {
+  /* line 218, ../sass/style.scss */
+  #info {
+    padding: 10rem calc(3vw + 130px);
+  }
 }
 
-/* line 195, ../sass/style.scss */
+/* line 226, ../sass/style.scss */
 h2 {
-  font-size: 2em;
-  line-height: 1.5em;
+  font-size: 2rem;
+  line-height: 3rem;
+}
+/* line 229, ../sass/style.scss */
+h2::selection {
+  background-color: #8039C0;
 }
